@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
+from sklearn.metrics import precision_recall_fscore_support as prfs
 
 
 def plot_attn_weights(attn_weights):
@@ -21,3 +22,10 @@ def plot_attn_weights(attn_weights):
     plt.show()
     plt.savefig(os.path.join(wandb.run.dir, 'attn_weights.png'),dpi=200)
     wandb.save('*png')
+
+
+def custom_f1_score(true_list, pred_list):
+    f1_list = [prfs(tr, pr, average='binary')[2] for (tr,pr) in zip(true_list, pred_list)]
+    f1_score = sum(f1_list) / len(f1_list)
+
+    return f1_score

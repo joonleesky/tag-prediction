@@ -62,7 +62,7 @@ if __name__ == "__main__":
         val_answer = val_answer.split('\n')[:-1]
         for answer_idx, tags in enumerate(val_answer):
             tags = list(map(int, tags.split(' ')))
-            question = train_query[answer_idx]
+            question = val_query[answer_idx]
             question_to_tags[question] = tags
             val_data['labels'][answer_idx] = tags
             for tag in tags:

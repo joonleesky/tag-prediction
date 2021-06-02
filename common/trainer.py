@@ -4,7 +4,7 @@ import torch
 import numpy as np
 import torch.nn.functional as F
 from models.tag_prediction_models import TagPredictor
-from sklearn.metrics import f1_score
+from common.misc_utils import custom_f1_score
 
 
 class Trainer():
@@ -101,7 +101,7 @@ class Trainer():
         thresholds = np.arange(0, 1, 0.1)
         best_f1 = 0
         for th in thresholds:
-            f1 = f1_score(y_true_list, y_pred_list > th, average='micro')
+            f1 = custom_f1_score(y_true_list, y_pred_list > th)
             if f1 > best_f1:
                 best_f1 = f1
         summary['F1'] = best_f1

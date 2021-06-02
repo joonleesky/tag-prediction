@@ -33,7 +33,7 @@ if __name__ == "__main__":
     parser.add_argument('--dropout', type=float, default=0.0)
     # train
     parser.add_argument('--batch_size', type=int, default=256)
-    parser.add_argument('--lr', type=float, default=0.0003)
+    parser.add_argument('--lr', type=float, default=0.001)
     parser.add_argument('--epochs', type=int, default=100)
     parser.add_argument('--weight_decay', type=float, default=0)
 
@@ -45,7 +45,7 @@ if __name__ == "__main__":
     print('[INITIALIZE ENVIRONMENTAL CONFIGS]')
     wandb.login()
     wandb.init(project='tag_prediction')
-    # os.environ["CUDA_VISIBLE_DEVICES"] = ','.join(str(args.gpu))
+    os.environ["CUDA_VISIBLE_DEVICES"] = ','.join(str(args.gpu))
     device = torch.device('cuda' if args.gpu != -1 else 'cpu')
     random.seed(args.seed)
     np.random.seed(args.seed)

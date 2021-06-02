@@ -1,0 +1,32 @@
+wandb_version: 1
+
+batch_size:
+  value: 512
+data_dir:
+  value: ./data
+data_type:
+  value: mathoverflow
+dropout:
+  value: 0.15
+embedding_dim:
+  value: 512
+epochs:
+  value: 100
+evaluate_every:
+  value: 2
+exp_name:
+  value: debug
+gpu:
+  value: 0
+lr:
+  value: 0.001
+max_answerers:
+  value: 5
+max_questions:
+  value: 20
+num_hidden_layers:
+  value: 1
+user:
+  value: hj
+weight_decay:
+  value: 1.0e-05
